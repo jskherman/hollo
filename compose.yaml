@@ -1,33 +1,33 @@
 services:
-  hollo:
-    image: .
-    ports:
-      - '3000:3000'
-    environment:
-      TZ: '${GENERIC_TIMEZONE:-UTC}'
-      DATABASE_URL: 'postgres://${SERVICE_USER_PGHOLLO}:${SERVICE_PASSWORD_PGHOLLO}@postgres:5432/hollo'
-      SECRET_KEY: '${SERVICE_REALBASE64_64_HOLLO}'
-      LOG_LEVEL: '${LOG_LEVEL:-INFO}'
-      BEHIND_PROXY: '${BEHIND_PROXY:-true}'
-      DRIVE_DISK: s3
-      ASSET_URL_BASE: 'http://localhost:9000/hollo/'
-      S3_REGION: '${S3_REGION_HOLLO:-us-east-1}'
-      S3_BUCKET: '${S3_BUCKET_NAME_HOLLO}'
-      S3_ENDPOINT_URL: '${S3_ENDPOINT_HOLLO}'
-      S3_FORCE_PATH_STYLE: 'true'
-      AWS_ACCESS_KEY_ID: '${AWS_ACCESS_KEY_ID_HOLLO}'
-      AWS_SECRET_ACCESS_KEY: '${AWS_SECRET_ACCESS_KEY_HOLLO}'
-    depends_on:
-      - postgres
-    restart: unless-stopped
-  postgres:
-    image: 'postgres:17'
-    environment:
-      POSTGRES_USER: '${SERVICE_USER_PGHOLLO}'
-      POSTGRES_PASSWORD: '${SERVICE_PASSWORD_PGHOLLO}'
-      POSTGRES_DB: hollo
-    volumes:
-      - 'postgres_data:/var/lib/postgresql/data'
-    restart: unless-stopped
+  hollo:
+    image: .
+    ports:
+      - '3000:3000'
+    environment:
+      TZ: '${GENERIC_TIMEZONE:-UTC}'
+      DATABASE_URL: 'postgres://${SERVICE_USER_PGHOLLO}:${SERVICE_PASSWORD_PGHOLLO}@postgres:5432/hollo'
+      SECRET_KEY: '${SERVICE_REALBASE64_64_HOLLO}'
+      LOG_LEVEL: '${LOG_LEVEL:-INFO}'
+      BEHIND_PROXY: '${BEHIND_PROXY:-true}'
+      DRIVE_DISK: s3
+      ASSET_URL_BASE: 'http://localhost:9000/hollo/'
+      S3_REGION: '${S3_REGION_HOLLO:-us-east-1}'
+      S3_BUCKET: '${S3_BUCKET_NAME_HOLLO}'
+      S3_ENDPOINT_URL: '${S3_ENDPOINT_HOLLO}'
+      S3_FORCE_PATH_STYLE: 'true'
+      AWS_ACCESS_KEY_ID: '${AWS_ACCESS_KEY_ID_HOLLO}'
+      AWS_SECRET_ACCESS_KEY: '${AWS_SECRET_ACCESS_KEY_HOLLO}'
+    depends_on:
+      - postgres
+    restart: unless-stopped
+  postgres:
+    image: 'postgres:17'
+    environment:
+      POSTGRES_USER: '${SERVICE_USER_PGHOLLO}'
+      POSTGRES_PASSWORD: '${SERVICE_PASSWORD_PGHOLLO}'
+      POSTGRES_DB: hollo
+    volumes:
+      - 'postgres_data:/var/lib/postgresql/data'
+    restart: unless-stopped
 volumes:
-  postgres_data: 
+  postgres_data: 
