@@ -136,7 +136,7 @@ app.patch(
       await disk.put(path, new Uint8Array(content), {
         contentType: form.avatar.type,
         contentLength: content.byteLength,
-        visibility: "public",
+        // visibility: "public",
       });
       avatarUrl = await disk.getUrl(path);
     }
@@ -156,7 +156,7 @@ app.patch(
         await disk.put(path, new Uint8Array(content), {
           contentType: form.header.type,
           contentLength: content.byteLength,
-          visibility: "public",
+          // visibility: "public",
         });
       } catch (error) {
         return c.json({ error: "Failed to upload header image." }, 500);
